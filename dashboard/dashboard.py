@@ -6,11 +6,16 @@ import streamlit as st
 # Membaca data
 @st.cache_data
 def load_data():
-    data = pd.read_csv("https://github.com/gerardjulian/dashboard-bike/blob/8b7020f66e63502f19442d8ce2d174da85f806e8/dashboard/day.csv")
+    url = "https://raw.githubusercontent.com/gerardjulian/dashboard-bike/main/dashboard/day.csv"
+    data = pd.read_csv(url)
     data['dteday'] = pd.to_datetime(data['dteday'])
     return data
 
-df = load_data()
+try:
+    df = load_data()
+except Exception as e:
+    st.error(f"Error loading data: {e}")
+    st.stop()
 
 # Judul dashboard
 st.title('Bike Sharing Analysis')
