@@ -6,7 +6,7 @@ import streamlit as st
 # Membaca data
 @st.cache_data
 def load_data():
-    data = pd.read_csv('day.csv')
+    data = pd.read_csv("https://github.com/gerardjulian/dashboard-bike/blob/8b7020f66e63502f19442d8ce2d174da85f806e8/dashboard/day.csv")
     data['dteday'] = pd.to_datetime(data['dteday'])
     return data
 
